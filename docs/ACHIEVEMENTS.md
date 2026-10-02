@@ -1,6 +1,6 @@
 # Achievementek
 
-Az achievementek definíciója a `src/features/achievements/definitions.ts`-ben él, a kiértékelés tiszta függvény: `evaluate(prevState, event) => newlyUnlocked[]`. Az egyszer megszerzett achievement soha nem vész el. Mentés: `wim:achievements` ([STORAGE_AND_TIME.md](STORAGE_AND_TIME.md)).
+Az achievementek definíciója és kiértékelése a `src/features/achievements/achievements.ts`-ben él. A kiértékelés tiszta függvény: `evaluateAchievements(state, event, day, at) => { state, newlyUnlocked }`. A nevek és leírások az i18n szótárban vannak (`achievement.<id>.name/desc`). Az egyszer megszerzett achievement soha nem vész el. Mentés: `wim:achievements` ([STORAGE_AND_TIME.md](STORAGE_AND_TIME.md)).
 
 | ID | Név | Feltétel | Ikon (javaslat) |
 |---|---|---|---|
@@ -20,7 +20,7 @@ Az achievementek definíciója a `src/features/achievements/definitions.ts`-ben 
 
 ## Szabályok
 
-- Kiértékelési események: `GAME_WON`, `GAME_LOST`, `THEME_CHANGED`.
+- Kiértékelési események: `gameEnded` (győzelem és vereség, a frissített statisztikával) és `themeChanged`. A `gameEnded` naponta egyszer fut, mert a statisztika rögzítése idempotens.
 - `Night Owl` / `Early Bird`: a `completedHour` (helyi óra) alapján, nem UTC.
 - `Comeback Kid`: a `stats` előző `bestStreak`/megszakadt streak adataiból kiszámolható (a megszakadt streak hosszát a `stats.lastBrokenStreak` tárolja).
 - `Flawless`: számláló a `counters.flawlessRun`-ban, a nem teljesítő játék (vereség vagy > 3 tipp) nullázza.

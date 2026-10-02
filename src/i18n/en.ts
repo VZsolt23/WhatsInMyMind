@@ -1,0 +1,123 @@
+export const en = {
+  'app.title': 'WhatsInMyMind',
+  'app.tagline': 'A daily word puzzle',
+
+  'common.close': 'Close',
+
+  'header.help': 'How to play',
+  'header.stats': 'Statistics',
+  'header.achievements': 'Achievements',
+  'header.settings': 'Settings',
+
+  'game.puzzleNumber': 'Puzzle #{n}',
+  'game.category': 'Category',
+  'game.attempts': 'Guesses: {used}/{max}',
+  'game.words': 'Words',
+  'game.wordLabel': '{n} {dir}',
+  'game.wordLength': '{n} letters',
+  'game.solved': 'solved',
+  'game.hint': 'Hint: {clue}',
+  'game.selectedWord': 'Selected: {label}',
+  'game.board': 'Puzzle board',
+  'game.guessN': 'Guess {n}',
+  'game.cell': 'Row {row}, column {col}',
+  'game.loadError': 'No puzzle is available right now. Please try again later.',
+
+  'dir.across': 'Across',
+  'dir.down': 'Down',
+
+  'tile.correct': '{letter}, correct',
+  'tile.present': '{letter}, in the word but in another spot',
+  'tile.absent': '{letter}, not in the word',
+  'tile.empty': 'empty',
+
+  'notice.notEnoughLetters': 'Not enough letters',
+  'notice.selectWord': 'Select a word first',
+
+  'keyboard.label': 'Keyboard',
+  'keyboard.enter': 'Enter',
+  'keyboard.backspace': 'Delete letter',
+
+  'end.won': 'You read my mind!',
+  'end.lost': 'Not this time.',
+  'end.wonIn': 'Solved in {n}/{max} guesses.',
+  'end.answer': 'The answer was',
+  'end.answers': 'The answers were',
+  'end.share': 'Share result',
+  'end.copied': 'Result copied to clipboard',
+  'end.copyFailed': 'Could not copy the result',
+  'end.next': 'Next puzzle in',
+
+  'status.storageUnavailable': 'Your progress cannot be saved in this browser.',
+  'status.clockBehind': "Your device's clock seems to be behind. Showing your latest puzzle.",
+
+  'help.title': 'How to play',
+  'help.intro':
+    'Guess what is on my mind today. You get one puzzle per day and a category as your only clue.',
+  'help.single': 'Single word: type the whole word or phrase and press Enter.',
+  'help.grid':
+    'Crossword grid: pick a word (tap a cell or a word button), type it, and press Enter. Correct letters stay revealed and also appear in crossing words. All words share the same number of guesses.',
+  'help.colors': 'After each guess the letters change colour:',
+  'help.correct': 'right letter, right spot',
+  'help.present': 'in the word, but in another spot',
+  'help.absent': 'not in the word (or no more copies of it)',
+  'help.limit':
+    'The number of guesses depends on the size of the puzzle. A new puzzle arrives every day at midnight.',
+
+  'stats.title': 'Statistics',
+  'stats.played': 'Played',
+  'stats.winRate': 'Win %',
+  'stats.currentStreak': 'Current streak',
+  'stats.bestStreak': 'Best streak',
+  'stats.distribution': 'Guess distribution',
+  'stats.gridWins': 'Grids solved: {won}/{played}',
+  'stats.empty': 'Play your first puzzle to see statistics.',
+
+  'achievements.title': 'Achievements',
+  'achievements.progress': '{n} of {total} unlocked',
+  'achievements.unlockedOn': 'Unlocked {date}',
+  'achievements.locked': 'Locked',
+  'achievements.toast': 'Achievement unlocked: {name}',
+
+  'achievement.first-thoughts.name': 'First Thoughts',
+  'achievement.first-thoughts.desc': 'Solve your first puzzle.',
+  'achievement.mind-reader.name': 'Mind Reader',
+  'achievement.mind-reader.desc': 'Solve a puzzle with your first guess.',
+  'achievement.clutch.name': 'Clutch',
+  'achievement.clutch.desc': 'Solve a puzzle with your very last guess.',
+  'achievement.warming-up.name': 'Warming Up',
+  'achievement.warming-up.desc': 'Reach a 3-day streak.',
+  'achievement.on-a-roll.name': 'On a Roll',
+  'achievement.on-a-roll.desc': 'Reach a 7-day streak.',
+  'achievement.mastermind.name': 'Mastermind',
+  'achievement.mastermind.desc': 'Reach a 30-day streak.',
+  'achievement.crossed-wires.name': 'Crossed Wires',
+  'achievement.crossed-wires.desc': 'Solve your first crossword grid.',
+  'achievement.grid-lock.name': 'Grid Lock',
+  'achievement.grid-lock.desc': 'Solve 5 crossword grids.',
+  'achievement.night-owl.name': 'Night Owl',
+  'achievement.night-owl.desc': 'Solve a puzzle between midnight and 4 am.',
+  'achievement.early-bird.name': 'Early Bird',
+  'achievement.early-bird.desc': 'Solve a puzzle between 4 am and 6 am.',
+  'achievement.comeback-kid.name': 'Comeback Kid',
+  'achievement.comeback-kid.desc': 'Start a new streak after losing one of 3 days or more.',
+  'achievement.retro-soul.name': 'Retro Soul',
+  'achievement.retro-soul.desc': 'Try the retro theme.',
+  'achievement.flawless.name': 'Flawless',
+  'achievement.flawless.desc': 'Solve 5 puzzles in a row in 3 guesses or fewer.',
+
+  'settings.title': 'Settings',
+  'settings.theme': 'Theme',
+  'settings.theme.system': 'System',
+  'settings.theme.light': 'Light',
+  'settings.theme.dark': 'Dark',
+  'settings.theme.legacy': 'Retro 98',
+  'settings.reducedMotion': 'Reduce motion',
+
+  'error.title': 'Something went wrong',
+  'error.body': 'Reload the page to continue. Your saved progress is safe.',
+  'error.reload': 'Reload',
+} as const;
+
+export type MessageKey = keyof typeof en;
+export type Messages = Record<MessageKey, string>;

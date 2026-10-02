@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="WhatsInMyMind – a daily word puzzle. One puzzle a day, one category, limited guesses."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/JetBrainsMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/JetBrainsMono-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <title>WhatsInMyMind</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash of the wrong theme.
+      (function () {
+        var theme = 'system';
+        try {
+          var raw = localStorage.getItem('wim:settings');
+          if (raw) theme = JSON.parse(raw).theme || 'system';
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark' && theme !== 'legacy') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

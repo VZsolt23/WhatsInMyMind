@@ -1,0 +1,286 @@
+[
+  {
+    "id": "en-001",
+    "type": "single",
+    "category": "A bit out of shape these days",
+    "answer": "DAD BOD",
+    "note": "easy"
+  },
+  {
+    "id": "en-002",
+    "type": "grid",
+    "category": "In the toolbox",
+    "rows": 6,
+    "cols": 6,
+    "words": [
+      { "id": "w1", "answer": "HAMMER", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "AWL", "row": 0, "col": 1, "dir": "down", "clue": "Pokes holes in leather" },
+      { "id": "w3", "answer": "MALLET", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "RASP", "row": 0, "col": 5, "dir": "down", "clue": "A very coarse file" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-003",
+    "type": "single",
+    "category": "Monday morning's best friend",
+    "answer": "COFFEE",
+    "note": "easy"
+  },
+  {
+    "id": "en-004",
+    "type": "single",
+    "category": "Makes grown adults cry in the kitchen",
+    "answer": "ONIONS",
+    "note": "easy"
+  },
+  {
+    "id": "en-005",
+    "type": "grid",
+    "category": "On the breakfast table",
+    "rows": 7,
+    "cols": 8,
+    "words": [
+      { "id": "w1", "answer": "TOAST", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "TEA", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "SYRUP", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "BUTTER", "row": 3, "col": 2, "dir": "across" },
+      { "id": "w5", "answer": "EGGS", "row": 3, "col": 6, "dir": "down" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-006",
+    "type": "single",
+    "category": "Works nonstop and never asks for a raise",
+    "answer": "HEART",
+    "note": "medium"
+  },
+  {
+    "id": "en-007",
+    "type": "single",
+    "category": "Round, cheesy and cut into triangles",
+    "answer": "PIZZA",
+    "note": "easy"
+  },
+  {
+    "id": "en-008",
+    "type": "grid",
+    "category": "Popular pets",
+    "rows": 6,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "HAMSTER", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "MOUSE", "row": 0, "col": 2, "dir": "down" },
+      { "id": "w3", "answer": "TURTLE", "row": 0, "col": 4, "dir": "down" },
+      { "id": "w4", "answer": "RABBIT", "row": 0, "col": 6, "dir": "down" }
+    ],
+    "note": "easy"
+  },
+  {
+    "id": "en-009",
+    "type": "single",
+    "category": "Just five more minutes, please",
+    "answer": "SNOOZE BUTTON",
+    "note": "medium"
+  },
+  {
+    "id": "en-010",
+    "type": "single",
+    "category": "Gets wetter the more it dries",
+    "answer": "TOWEL",
+    "note": "medium"
+  },
+  {
+    "id": "en-011",
+    "type": "grid",
+    "category": "In the fruit bowl",
+    "rows": 6,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "MANGO", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "MELON", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "GRAPE", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "PEAR", "row": 3, "col": 3, "dir": "across" },
+      { "id": "w5", "answer": "CHERRY", "row": 0, "col": 6, "dir": "down" }
+    ],
+    "note": "easy"
+  },
+  {
+    "id": "en-012",
+    "type": "single",
+    "category": "Monday's natural enemy",
+    "answer": "WEEKEND",
+    "note": "easy"
+  },
+  {
+    "id": "en-013",
+    "type": "single",
+    "category": "One small step for a man",
+    "answer": "MOON LANDING",
+    "note": "medium"
+  },
+  {
+    "id": "en-014",
+    "type": "grid",
+    "category": "Kitchen drawer essentials",
+    "rows": 5,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "SPATULA", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "SPOON", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "TONGS", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "LADLE", "row": 0, "col": 5, "dir": "down" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-015",
+    "type": "single",
+    "category": "Has plenty of keys but opens no doors",
+    "answer": "PIANO",
+    "note": "medium"
+  },
+  {
+    "id": "en-016",
+    "type": "single",
+    "category": "Every hero needs one",
+    "answer": "SIDEKICK",
+    "note": "medium"
+  },
+  {
+    "id": "en-017",
+    "type": "grid",
+    "category": "Today's weather report",
+    "rows": 7,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "THUNDER", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "HAIL", "row": 0, "col": 1, "dir": "down" },
+      { "id": "w3", "answer": "DRIZZLE", "row": 0, "col": 4, "dir": "down" },
+      { "id": "w4", "answer": "RAIN", "row": 0, "col": 6, "dir": "down" },
+      { "id": "w5", "answer": "SLEET", "row": 6, "col": 2, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-018",
+    "type": "single",
+    "category": "Where office gossip flows freely",
+    "answer": "WATER COOLER",
+    "note": "hard"
+  },
+  {
+    "id": "en-019",
+    "type": "single",
+    "category": "Cold, sweet and racing the sun",
+    "answer": "ICE CREAM",
+    "note": "easy"
+  },
+  {
+    "id": "en-020",
+    "type": "grid",
+    "category": "A day at the seaside",
+    "rows": 6,
+    "cols": 5,
+    "words": [
+      { "id": "w1", "answer": "SHELL", "row": 0, "col": 1, "dir": "down" },
+      { "id": "w2", "answer": "BEACH", "row": 2, "col": 0, "dir": "across" },
+      { "id": "w3", "answer": "CRAB", "row": 2, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "ALGAE", "row": 4, "col": 0, "dir": "across", "clue": "Green and slimy" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-021",
+    "type": "single",
+    "category": "Keeps you awake and slightly jittery",
+    "answer": "CAFFEINE",
+    "note": "medium"
+  },
+  {
+    "id": "en-022",
+    "type": "single",
+    "category": "Embarrassing proof you were tiny once",
+    "answer": "BABY PHOTOS",
+    "note": "hard"
+  },
+  {
+    "id": "en-023",
+    "type": "grid",
+    "category": "Strike up the band",
+    "rows": 8,
+    "cols": 9,
+    "words": [
+      { "id": "w1", "answer": "GUITAR", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "GONG", "row": 0, "col": 0, "dir": "down", "clue": "Bang it loudly" },
+      { "id": "w3", "answer": "TUBA", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "RECORDER", "row": 0, "col": 5, "dir": "down" },
+      { "id": "w5", "answer": "DRUM", "row": 5, "col": 5, "dir": "across" }
+    ],
+    "note": "hard"
+  },
+  {
+    "id": "en-024",
+    "type": "single",
+    "category": "Nature's colour palette after the rain",
+    "answer": "RAINBOW",
+    "note": "easy"
+  },
+  {
+    "id": "en-025",
+    "type": "single",
+    "category": "Announces guests before you see them",
+    "answer": "DOORBELL",
+    "note": "medium"
+  },
+  {
+    "id": "en-026",
+    "type": "grid",
+    "category": "Things on wheels",
+    "rows": 8,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "TRACTOR", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "TRAIN", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "CART", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "RICKSHAW", "row": 0, "col": 6, "dir": "down", "clue": "Pulled by a person" }
+    ],
+    "note": "hard"
+  },
+  {
+    "id": "en-027",
+    "type": "single",
+    "category": "A glowing rectangle that steals your evenings",
+    "answer": "SMARTPHONE",
+    "note": "medium"
+  },
+  {
+    "id": "en-028",
+    "type": "single",
+    "category": "Small talk's favourite topic",
+    "answer": "WEATHER",
+    "note": "easy"
+  },
+  {
+    "id": "en-029",
+    "type": "grid",
+    "category": "Lost in space",
+    "rows": 6,
+    "cols": 6,
+    "words": [
+      { "id": "w1", "answer": "SATURN", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "STAR", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "ROCKET", "row": 0, "col": 4, "dir": "down" },
+      { "id": "w4", "answer": "ORBIT", "row": 5, "col": 0, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-030",
+    "type": "single",
+    "category": "Won a famous race without ever hurrying",
+    "answer": "TORTOISE",
+    "note": "medium"
+  }
+]

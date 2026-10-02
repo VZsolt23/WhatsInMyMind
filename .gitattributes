@@ -18,4 +18,4 @@
 *.otf binary
 
 # Lockfiles: don't show noisy diffs, never auto-merge
-package-lock.json -diff merge=binary
+yarn.lock -diff merge=binary

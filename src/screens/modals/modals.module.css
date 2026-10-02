@@ -1,0 +1,233 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.subTitle {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.example > div {
+  --tile-max: 40px;
+  justify-content: flex-start;
+}
+
+.example p {
+  margin-bottom: var(--space-2);
+}
+
+/* Statistics */
+.statTiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.statTile {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  text-align: center;
+}
+
+.statValue {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.statLabel {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.2;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.barLabel {
+  width: 1.5ch;
+  text-align: right;
+}
+
+.bar {
+  width: var(--w);
+  min-width: 2ch;
+  padding: 1px var(--space-2);
+  text-align: right;
+  background: var(--color-absent);
+  color: var(--color-absent-text);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+
+.bar[data-highlight] {
+  background: var(--color-correct);
+  color: var(--color-correct-text);
+}
+
+/* Achievements */
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.achievement {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunken);
+  opacity: 0.55;
+}
+
+.achievement[data-unlocked] {
+  opacity: 1;
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-raised);
+}
+
+.achievementIcon {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  filter: grayscale(1);
+}
+
+.achievement[data-unlocked] .achievementIcon {
+  filter: none;
+}
+
+.achievementText {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--text-sm);
+}
+
+.achievementStatus {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+/* Settings */
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.fieldset legend {
+  margin-bottom: var(--space-2);
+}
+
+.themeOptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+.themeOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-raised);
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.themeOption[data-checked] {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.themeOption input {
+  accent-color: var(--color-accent);
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+}
+
+.swatch[data-swatch='system'] {
+  background: linear-gradient(135deg, #f5f4ef 50%, #121215 50%);
+}
+
+.swatch[data-swatch='light'] {
+  background: #f5f4ef;
+}
+
+.swatch[data-swatch='dark'] {
+  background: #121215;
+}
+
+.swatch[data-swatch='legacy'] {
+  border-radius: 0;
+  background: linear-gradient(#0a246a 0 35%, #c0c0c0 35%);
+}
+
+.toggleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-sm);
+}
+
+.toggleRow input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-accent);
+}
+
+[data-theme='legacy'] .achievement,
+[data-theme='legacy'] .themeOption {
+  border: 0;
+}
+
+[data-theme='legacy'] .themeOption[data-checked] {
+  outline: 1px dotted #000;
+  box-shadow: var(--shadow-sunken);
+}

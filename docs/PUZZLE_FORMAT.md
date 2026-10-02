@@ -68,7 +68,7 @@ Mezők:
 - Ne legyen mindenhol a legnehezebb, a 30 napban kb. 20 egyszavas / 10 rácsos, nehézségben vegyesen (kb. 40% könnyű, 40% közepes, 20% nehéz).
 - Kerüljük a kényes, sértő vagy napi aktualitáshoz kötött témákat. Angol rejtvénynél a magyar szójátékokat nem fordítjuk szó szerint.
 
-## Validátor (`npm run validate`, a build része)
+## Validátor (`yarn validate`, a build része)
 
 Hibát jelez (nem nulla kilépési kód), ha:
 
@@ -81,9 +81,11 @@ Hibát jelez (nem nulla kilépési kód), ha:
 7. a szavak/hosszak kívül esnek a megengedett tartományon;
 8. kevesebb mint `MIN_PUZZLES` (30) rejtvény van.
 
-A validátor ugyanazt a `schema.ts` ellenőrzést használja, mint a futásidejű betöltés.
+A szabályok a `src/puzzles/validate.ts`-ben vannak, ezt használja a build-szkript és a futásidejű betöltés is. A 3–5. pont egyetlen szabályból következik: a rácsban minden legalább 2 hosszú, egybefüggő betűsor (soronként és oszloponként) pontosan egy szó kell legyen.
+
+`yarn validate --min=N` felülírja a minimumot (pl. új nyelv fejlesztése közben).
 
 ## Tartalomkészítési folyamat
 
-1. Téma és megoldás kitalálása → 2. rácsnál elhelyezés → 3. `npm run validate` → 4. játékpróba (kézzel), nehézség besorolása a `note`-ban → 5. commit.
+1. Téma és megoldás kitalálása → 2. rácsnál elhelyezés → 3. `yarn validate` → 4. játékpróba (kézzel), nehézség besorolása a `note`-ban → 5. commit.
 A rejtvényeket csoportosan (5–10 egyszerre) készítjük, és mindegyiket egy második kör után véglegesítjük.

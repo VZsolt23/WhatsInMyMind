@@ -38,7 +38,7 @@ A kiválasztott téma localStorage-ben tárolódik. Első indításkor a rendsze
 ## Technológia
 
 - **React + Vite** (JavaScript vagy TypeScript)
-- **Hosting:** Netlify (statikus build, `npm run build` → `dist`)
+- **Hosting:** Netlify (statikus build, `yarn build` → `dist`)
 - **Adattárolás:** csak a böngészőben (localStorage), nincs backend, nincs költség
   - téma, streak, achievementek, statisztikák, a mai játék állapota
 - **Napi rejtvény kiválasztása:** statikus rejtvényfájl (JSON), a dátum alapján determinisztikusan választva. Szerver nélkül is mindenkinek ugyanaz a mai feladvány.

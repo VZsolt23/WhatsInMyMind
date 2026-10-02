@@ -1,0 +1,21 @@
+import type { ButtonHTMLAttributes } from 'react';
+import styles from './Button.module.css';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'icon';
+}
+
+export function Button({
+  variant = 'secondary',
+  className,
+  type = 'button',
+  ...rest
+}: ButtonProps) {
+  return (
+    <button
+      type={type}
+      className={[styles.button, styles[variant], className].filter(Boolean).join(' ')}
+      {...rest}
+    />
+  );
+}

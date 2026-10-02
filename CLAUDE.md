@@ -18,12 +18,17 @@ Napi szókitalálós játék (Wordle-logika + Szerencsekerék-kategóriák, egys
 ## Parancsok
 
 ```bash
-npm run dev          # fejlesztői szerver
-npm run build        # tsc + puzzle-validáció + vite build
-npm run test         # vitest
-npm run lint         # eslint
-npm run validate     # rejtvényfájlok ellenőrzése
+yarn dev            # fejlesztői szerver
+yarn build          # puzzle-validáció + tsc + vite build
+yarn test           # vitest (egyszer)
+yarn test:watch     # vitest figyelő módban
+yarn coverage       # lefedettségi riport
+yarn lint           # eslint
+yarn format         # prettier --write
+yarn validate       # rejtvényfájlok ellenőrzése (alapból min. 30 rejtvény; --min=N felülírja)
 ```
+
+Csomagkezelő: **Yarn 1**. npm-et ne használj (nincs `package-lock.json`).
 
 ## Alapszabályok
 
@@ -39,7 +44,7 @@ npm run validate     # rejtvényfájlok ellenőrzése
 ## Munkafolyamat
 
 - Egy feladat = egy kis, önállóan zöld lépés. A [docs/TASKS.md](docs/TASKS.md) mérföldköveit sorrendben haladd.
-- Mielőtt kész jelölsz egy feladatot: `npm run lint && npm run test && npm run build` hibamentes.
+- Mielőtt kész jelölsz egy feladatot: `yarn lint && yarn test && yarn build` hibamentes.
 - Játéklogikai változásnál először a teszt, aztán a kód.
 - Szabálymódosításnál frissítsd a megfelelő `docs/` fájlt is, a dokumentáció és a kód nem térhet el.
 - Commit: csak kérésre. Üzenetstílus: [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md).

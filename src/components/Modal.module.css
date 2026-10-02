@@ -1,0 +1,131 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: var(--color-overlay);
+  cursor: default;
+  animation: fade-in var(--motion-normal) ease-out;
+}
+
+.dialog {
+  position: relative;
+  width: min(100%, 460px);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-popup);
+  animation: pop-in var(--motion-normal) ease-out;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-2) var(--space-5);
+  background: var(--titlebar-bg);
+  color: var(--titlebar-text);
+}
+
+.title {
+  flex: 1;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.fakeControls {
+  display: var(--legacy-only);
+  gap: 2px;
+}
+
+.fakeButton,
+.close {
+  display: inline-grid;
+  place-items: center;
+}
+
+.fakeButton {
+  width: 18px;
+  height: 16px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-raised);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.close {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.close:hover {
+  background: var(--color-surface-sunken);
+}
+
+.body {
+  overflow-y: auto;
+  padding: var(--space-2) var(--space-5) var(--space-5);
+}
+
+[data-theme='legacy'] .dialog {
+  padding: 3px;
+}
+
+[data-theme='legacy'] .titlebar {
+  padding: 3px 3px 3px var(--space-2);
+}
+
+[data-theme='legacy'] .title {
+  font-size: var(--text-sm);
+}
+
+[data-theme='legacy'] .close {
+  width: 18px;
+  height: 16px;
+  margin-left: 2px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-raised);
+}
+
+[data-theme='legacy'] .close svg {
+  width: 10px;
+  height: 10px;
+  stroke-width: 3;
+}
+
+[data-theme='legacy'] .body {
+  padding: var(--space-3);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
