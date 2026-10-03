@@ -45,6 +45,18 @@ interface GameViewProps extends GameProps {
   number: number;
 }
 
+const ARROW_STEPS: Record<string, 1 | -1> = {
+  ArrowRight: 1,
+  ArrowDown: 1,
+  ArrowLeft: -1,
+  ArrowUp: -1,
+};
+
+/** Form controls (e.g. radio groups) keep their own arrow-key behaviour. */
+function isInteractive(target: EventTarget | null): boolean {
+  return target instanceof HTMLElement && target.closest('input, select, textarea') !== null;
+}
+
 /**
  * Whether Enter should go to the focused control instead of submitting a guess.
  * Grid cells and the already-selected word button submit, so a click followed
@@ -81,6 +93,10 @@ function GameView({ puzzle, number, day, inputEnabled }: GameViewProps) {
         if (enterBelongsToControl(event.target, selectedSlotId)) return;
         event.preventDefault();
         dispatch({ type: 'submit', now: new Date() });
+      } else if (isGrid && event.key in ARROW_STEPS) {
+        if (isInteractive(event.target)) return;
+        event.preventDefault();
+        dispatch({ type: 'selectAdjacent', step: ARROW_STEPS[event.key] as 1 | -1 });
       } else if (event.key === 'Backspace') {
         event.preventDefault();
         dispatch({ type: 'backspace' });
@@ -94,7 +110,7 @@ function GameView({ puzzle, number, day, inputEnabled }: GameViewProps) {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [inputEnabled, playing, alphabet, dispatch, selectedSlotId]);
+  }, [inputEnabled, playing, isGrid, alphabet, dispatch, selectedSlotId]);
 
   const selectedGuesses = selectedSlotId
     ? (state.progress.guessesBySlot.get(selectedSlotId) ?? [])

@@ -95,6 +95,17 @@ describe('App', () => {
     expect(screen.getByRole('button', { name: /^2 Down.*solved/ })).toBeDisabled();
   });
 
+  it('moves between grid words with the arrow keys', async () => {
+    seenHelp();
+    const { user } = setup(GRID_DAY);
+    const pressed = () => screen.getByRole('button', { pressed: true }).textContent;
+    expect(pressed()).toMatch(/^1 Across/);
+    await user.keyboard('{ArrowRight}');
+    expect(pressed()).toMatch(/^2 Down/);
+    await user.keyboard('{ArrowLeft}{ArrowLeft}');
+    expect(pressed()).toMatch(/^4 Down/);
+  });
+
   it('switches to the retro theme and unlocks Retro Soul', async () => {
     seenHelp();
     const { user } = setup(SINGLE_DAY);

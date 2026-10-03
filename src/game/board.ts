@@ -117,6 +117,13 @@ export function numberSlots(board: Board): {
   return { bySlot, byCell };
 }
 
+/** Slots sorted by clue number, across before down for a shared number. */
+export function slotsInCrosswordOrder(board: Board): Slot[] {
+  const { bySlot } = numberSlots(board);
+  const rank = (slot: Slot) => (bySlot.get(slot.id) ?? 0) * 2 + (slot.dir === 'across' ? 0 : 1);
+  return [...board.slots].sort((a, b) => rank(a) - rank(b));
+}
+
 export function getSlot(board: Board, slotId: string): Slot | undefined {
   return board.slots.find((s) => s.id === slotId);
 }

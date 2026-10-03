@@ -23,7 +23,7 @@ Kötelező tokencsoportok:
 - `--border-style` (modern: vékony vonal, legacy: bevel/inset, lásd lent)
 - `--motion-*` (átmeneti idők; `prefers-reduced-motion` esetén 0)
 
-Kontraszt: szöveg legalább WCAG AA (4.5:1) mindhárom témában. A zöld/sárga/szürke állapotot **másodlagos jelzés** is kíséri (pl. ikon vagy mintázat a csempén, magas kontrasztú mód lehetősége).
+Kontraszt: szöveg legalább WCAG AA (4.5:1), a nagy félkövér csempe- és billentyűbetűk legalább 3:1 mindhárom témában. Ezt a `src/themes/contrast.test.ts` a `tokens.css`-ből automatikusan ellenőrzi; új színpár vagy téma esetén bővítsd. A retró témában a türkiz asztalon nincs szöveg, ezért ez a pár kivétel. A zöld/sárga/szürke állapotot **másodlagos jelzés** is kíséri (pl. ikon vagy mintázat a csempén, magas kontrasztú mód lehetősége).
 
 ## Modern témák (light/dark)
 

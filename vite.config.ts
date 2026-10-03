@@ -13,6 +13,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
+    // Vitest stubs CSS by default; the contrast test needs the real token file.
+    css: { include: [/tokens\.css/] },
     coverage: {
       provider: 'v8',
       include: ['src/game/**', 'src/features/**', 'src/storage/**', 'src/lib/**', 'src/puzzles/**'],

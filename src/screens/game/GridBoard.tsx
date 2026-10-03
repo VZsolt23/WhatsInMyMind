@@ -1,7 +1,14 @@
 import { useMemo, type CSSProperties, type Dispatch } from 'react';
 import { GuessRow } from '@/components/GuessRow';
 import { useT } from '@/features/settings/settingsContext';
-import { cellKey, getSlot, numberSlots, type Cell, type Slot } from '@/game/board';
+import {
+  cellKey,
+  getSlot,
+  numberSlots,
+  slotsInCrosswordOrder,
+  type Cell,
+  type Slot,
+} from '@/game/board';
 import { inputRow, openPositions, type PlayAction, type PlayState } from '@/game/reducer';
 import styles from './GridBoard.module.css';
 
@@ -15,6 +22,7 @@ export function GridBoard({ state, dispatch, revealFrom }: GridBoardProps) {
   const t = useT();
   const { board, progress, selectedSlotId, game } = state;
   const numbering = useMemo(() => numberSlots(board), [board]);
+  const orderedSlots = useMemo(() => slotsInCrosswordOrder(board), [board]);
   const selected = selectedSlotId ? getSlot(board, selectedSlotId) : undefined;
   const finished = game.status !== 'in-progress';
 
@@ -96,7 +104,7 @@ export function GridBoard({ state, dispatch, revealFrom }: GridBoardProps) {
       </div>
 
       <div className={styles.words} role="group" aria-label={t('game.words')}>
-        {board.slots.map((slot) => {
+        {orderedSlots.map((slot) => {
           const solved = progress.solvedSlots.has(slot.id);
           return (
             <button

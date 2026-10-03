@@ -43,7 +43,7 @@ DoD: `yarn dev` és `yarn build` fut.
 - [x] Fizikai és virtuális billentyűzet, billentyű-állapotszínek
 - [x] Mentés minden változás után, visszatöltés frissítéskor
 - [x] Végeredmény-panel: eredmény, megoldás(ok), megosztás, visszaszámláló
-- [ ] Rácsban nyíl-billentyűs navigáció a szavak között (most: Tab a szógombokra + Space/Enter)
+- [x] Rácsban nyíl-billentyűs navigáció a szavak között (→/↓ következő, ←/↑ előző megoldatlan szó, körbeforgóan)
 
 ## M5 – Streak és statisztika ✅
 
@@ -58,7 +58,7 @@ DoD: `yarn dev` és `yarn build` fut.
 - [x] Beállítások modál: témaválasztó, csökkentett mozgás, mentés
 - [x] Villanásmentes téma-inicializálás (inline script)
 - [x] Retro 98 téma: bevel keretek, címsor-gradiens, Tahoma, ablak-vezérlők, státuszsor ([THEMES.md](THEMES.md))
-- [ ] Kontraszt-ellenőrzés mérőeszközzel mindhárom témában (WCAG AA)
+- [x] Automatikus WCAG-kontrasztteszt mindhárom témára (`src/themes/contrast.test.ts`)
 
 ## M7 – Achievementek ✅
 
@@ -80,7 +80,8 @@ DoD: `yarn dev` és `yarn build` fut.
 - [x] Elérhetőség alapjai: billentyűzet, `aria-label`-ek, `aria-live`, nem csak színnel jelzett állapot
 - [x] Méretkeret: JS ≈ 86 KB gzip (< 150 KB)
 - [ ] Lighthouse-mérés (accessibility ≥ 95)
-- [ ] Open Graph meta tagek, megosztási kép, PWA-manifest (opcionális)
+- [x] Open Graph / Twitter meta tagek, `theme-color`, webes manifest
+- [ ] Megosztási kép (PNG, 1200×630) az `og:image`-hez
 
 ## M10 – Kiadás
 

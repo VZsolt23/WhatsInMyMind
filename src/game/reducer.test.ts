@@ -83,6 +83,11 @@ describe('single puzzle', () => {
     expect(guess(s, 'APPLE').game.guesses).toHaveLength(6);
   });
 
+  it('ignores word stepping in single mode', () => {
+    const s = start();
+    expect(run(s, { type: 'selectAdjacent', step: 1 })).toBe(s);
+  });
+
   it('ignores input after the game is over', () => {
     const won = guess(start(), 'APPLE');
     expect(typeWord(won, 'A')).toBe(won);
@@ -120,6 +125,26 @@ describe('grid puzzle', () => {
     const s = start();
     expect(s.selectedSlotId).toBe('w1');
     expect(run(s, { type: 'select', slotId: 'w3' }).selectedSlotId).toBe('w3');
+  });
+
+  it('steps to the next and previous word in crossword order, wrapping around', () => {
+    // Numbering: 1 = CAT across / CAR down (w1, w2), 2 = TOE down (w3).
+    const s = start();
+    expect(run(s, { type: 'selectAdjacent', step: 1 }).selectedSlotId).toBe('w2');
+    expect(
+      run(s, { type: 'selectAdjacent', step: 1 }, { type: 'selectAdjacent', step: 1 })
+        .selectedSlotId,
+    ).toBe('w3');
+    expect(run(s, { type: 'selectAdjacent', step: -1 }).selectedSlotId).toBe('w3');
+  });
+
+  it('skips solved words when stepping', () => {
+    const s = guess(start(), 'CAT'); // w1 solved, w2 selected
+    expect(run(s, { type: 'selectAdjacent', step: 1 }).selectedSlotId).toBe('w3');
+    expect(
+      run(s, { type: 'selectAdjacent', step: 1 }, { type: 'selectAdjacent', step: 1 })
+        .selectedSlotId,
+    ).toBe('w2');
   });
 
   it('clears typed letters when switching words', () => {

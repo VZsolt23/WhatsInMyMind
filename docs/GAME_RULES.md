@@ -50,6 +50,7 @@ A virtuális billentyűzet billentyűi a legjobb ismert állapotot mutatják (`c
 - A kijelölt szó beviteli sorába a zárolt betűk **előre kitöltődnek**. A játékos csak a hiányzókat írja, de a beküldött tipp a teljes szó.
 - Szó megoldása után a kijelölés automatikusan a következő megoldatlan szóra lép.
 - Enter: rácscellán és a már kijelölt szó gombján is beküldés (nem a gomb újbóli megnyomása).
+- Nyilak: →/↓ a következő, ←/↑ az előző megoldatlan szóra lép, számozási sorrendben (azonos számnál előbb a vízszintes), körbeforgóan. A szógombok is ebben a sorrendben jelennek meg.
 - Egy szó **megoldott**, ha minden cellája zárolt. A rács megoldott, ha minden szó az.
 - Újra tippelhető egy már megoldott szó? Nem, a megoldott szó nem jelölhető ki.
 - A tipp mindig fogyaszt, kivéve ha érvénytelen.

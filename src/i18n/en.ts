@@ -56,7 +56,7 @@ export const en = {
     'Guess what is on my mind today. You get one puzzle per day and a category as your only clue.',
   'help.single': 'Single word: type the whole word or phrase and press Enter.',
   'help.grid':
-    'Crossword grid: pick a word (tap a cell or a word button), type it, and press Enter. Correct letters stay revealed and also appear in crossing words. All words share the same number of guesses.',
+    'Crossword grid: pick a word (tap a cell or a word button, or use the arrow keys), type it, and press Enter. Correct letters stay revealed and also appear in crossing words. All words share the same number of guesses.',
   'help.colors': 'After each guess the letters change colour:',
   'help.correct': 'right letter, right spot',
   'help.present': 'in the word, but in another spot',

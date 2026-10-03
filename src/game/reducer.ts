@@ -1,7 +1,7 @@
 import type { DayKey } from '@/lib/dayKey';
 import type { Puzzle } from '@/puzzles/schema';
 import { getMaxAttempts } from './attempts';
-import { buildBoard, getSlot, type Board, type Slot } from './board';
+import { buildBoard, getSlot, slotsInCrosswordOrder, type Board, type Slot } from './board';
 import { evaluateGuess } from './feedback';
 import { deriveProgress, type Guess, type Progress } from './progress';
 
@@ -35,6 +35,8 @@ export interface PlayState {
 
 export type PlayAction =
   | { type: 'select'; slotId: string }
+  /** Grid only: move to the next (1) or previous (-1) unsolved word in crossword order. */
+  | { type: 'selectAdjacent'; step: 1 | -1 }
   | { type: 'type'; letter: string }
   | { type: 'backspace' }
   | { type: 'submit'; now: Date }
@@ -157,6 +159,16 @@ export function playReducer(state: PlayState, action: PlayAction): PlayState {
       const slot = getSlot(state.board, action.slotId);
       if (!slot || state.progress.solvedSlots.has(slot.id)) return state;
       return { ...state, selectedSlotId: slot.id, typed: '' };
+    }
+    case 'selectAdjacent': {
+      if (state.puzzle.type !== 'grid') return state;
+      const order = slotsInCrosswordOrder(state.board).filter(
+        (s) => s.id === state.selectedSlotId || !state.progress.solvedSlots.has(s.id),
+      );
+      const current = order.findIndex((s) => s.id === state.selectedSlotId);
+      const next = order[(current + action.step + order.length) % order.length];
+      if (!next || next.id === state.selectedSlotId) return state;
+      return { ...state, selectedSlotId: next.id, typed: '' };
     }
     case 'type': {
       const slot = state.selectedSlotId ? getSlot(state.board, state.selectedSlotId) : undefined;

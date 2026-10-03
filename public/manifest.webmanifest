@@ -1,0 +1,10 @@
+{
+  "name": "WhatsInMyMind",
+  "short_name": "WhatsInMyMind",
+  "description": "A daily word puzzle: one puzzle a day, one category, limited guesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f4ef",
+  "theme_color": "#f5f4ef",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
