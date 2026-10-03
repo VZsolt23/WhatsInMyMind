@@ -2,8 +2,8 @@ import type { DayKey } from '@/lib/dayKey';
 
 export const APP_NAME = 'WhatsInMyMind';
 
-/** Puzzle #1 is played on this day; set it to the real launch date before release. */
-export const LAUNCH_DATE: DayKey = '2026-10-01';
+/** Puzzle #1 is played on this day (the first Netlify deploy). Never change it after release. */
+export const LAUNCH_DATE: DayKey = '2026-10-03';
 
 export const MIN_PUZZLES = 30;
 export const GAMES_RETENTION_DAYS = 60;

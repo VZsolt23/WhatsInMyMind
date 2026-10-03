@@ -85,16 +85,16 @@ DoD: `yarn dev` és `yarn build` fut.
 
 ## M10 – Kiadás
 
-- [ ] `LAUNCH_DATE` beállítása a valódi indulási napra (`src/game/config.ts`)
-- [ ] Netlify telepítés (git-alapú vagy kézi deploy)
+- [x] `LAUNCH_DATE` = 2026-10-03 (az első telepítés napja); az App-tesztek ettől függetlenek
+- [x] README: futtatás, Netlify-lépések, állapot; verzió 1.0.0, `v1.0.0` címke
+- [ ] Netlify telepítés (git-alapú, a felhasználó fiókjában)
 - [ ] Éles ellenőrzés valódi mobilon és asztali gépen, mindhárom témával
-- [ ] README frissítése, verziócímke (`v1.0.0`)
 
 ## M11 – Második kör: magyar nyelv (később)
 
 - [ ] `hu` szótár (`Messages` típus), magyar ábécé és billentyűzet (ékezetes betűk)
 - [ ] `hu.json` rejtvények (30+), magyar szójátékos kategóriák (pl. *Aputest*)
-- [ ] Nyelvválasztó a beállításokban; döntés: közös vagy nyelvenkénti streak/statisztika
+- [ ] Nyelvválasztó a beállításokban; **döntés: nyelvenként külön** napi rejtvény, streak, statisztika és mentett játék (achievementek közösek maradhatnak)
 - [ ] Validátor kiterjesztése a magyar karakterekre (most `A–Z`)
 
 ## Később (ötletek, nem része az első kiadásnak)

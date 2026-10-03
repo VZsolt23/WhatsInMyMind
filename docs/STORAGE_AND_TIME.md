@@ -47,6 +47,7 @@ Szabályok:
   - `msUntilNextDay(now)`: a visszaszámlálóhoz
 - Tesztben a `now` paraméterrel az idő befagyasztható, `Date` mockolása nélkül. Kivétel: a teljes appot renderelő komponens-tesztek `vi.setSystemTime`-ot használnak.
 - A rejtvény sorszáma (1-től): `daysBetween(LAUNCH_DATE, today) + 1`, az indulás előtti napokon 1.
+- A `LAUNCH_DATE` (2026-10-03) kiadás után nem változhat: eltolná a sorszámokat, és a mentett játékok `puzzleId`-je nem egyezne a napi rejtvénnyel.
 
 ## Mi történik éjfélkor?
 

@@ -1,110 +1,72 @@
 # WhatsInMyMind
 
-Napi szókitalálós játék a Szerencsekerék kategória-témáiból és a Wordle visszajelzési logikájából építkezve. Minden napra egy rejtvény jut, egy kategória (téma) alapján kell kitalálni a rejtett szót vagy szavakat.
+Napi szókitalálós játék a Szerencsekerék kategória-utalásaiból és a Wordle visszajelzési logikájából építkezve. Naponta egy rejtvény jut: egy kategória alapján kell kitalálni a rejtett szót, kifejezést, vagy egy keresztrejtvény-rács szavait.
 
-> Az app neve nem kötődik egyetlen játékmódhoz: később más játékok is kerülhetnek bele ugyanazon a néven belül.
+> Az app neve nem kötődik egyetlen játékmódhoz: később más szavas játékok is kerülhetnek bele.
 
-## Röviden a játékról
+## A játék
 
-- **Napi rejtvény:** mindenkinek ugyanaz a rejtvény egy adott napon, naponta egy játék.
-- **Kategória/téma:** a játékos egy utalást kap, mint a Szerencsekerékben. Példa: *„Kicsit már puhány"* → válasz: *Aputest*. Az utalás lehet szójáték, körülírás vagy tágabb téma.
-- **Nincs előre megadott betű:** a rács üresen indul, csak a kategória segít.
-- **Wordle-logika:** tippelés után betűnkénti visszajelzés (zöld: jó helyen, sárga: benne van, de máshol, szürke: nincs benne).
-- **Korlátozott próbálkozás:** véges számú tipp naponta, a rejtvény méretétől függően.
+- **Napi rejtvény:** egy adott napon mindenkinek ugyanaz, naponta egy játék. Új rejtvény helyi idő szerint éjfélkor.
+- **Kategória mint egyetlen segítség:** szójáték, körülírás vagy téma (pl. *„Kicsit már puhány"* → *Aputest*; angolul *„A bit out of shape these days"* → *Dad bod*). Előre megadott betű nincs.
+- **Wordle-visszajelzés:** zöld = jó helyen, sárga = benne van, de máshol, szürke = nincs benne. A színek mellett jelölés is mutatja az állapotot.
+- **Két mód:**
+  - **Egyszavas:** egy szó vagy kifejezés, klasszikus Wordle-tippelés.
+  - **Rácsos:** 3–5 szó egy keresztrejtvény-rácsban. A kijelölt szót kell beírni; a megfejtett betűk a keresztező szavakban is megjelennek. A tippek az egész rácsra közösek.
+- **Tippkorlát:** a rejtvény méretétől függ (egyszavasnál 6–8, rácsnál 6–10).
+- **Streak, statisztika, 13 achievement**, spoilermentes megosztás (emoji-rács).
+- **Témák:** világos, sötét és **Retro 98** (Windows 98/XP hangulat). A választás a böngészőben tárolódik.
 
-## Játékmódok
+Minden adat csak a játékos böngészőjében (localStorage) van: nincs backend, nincs fiók, nincs analitika.
 
-1. **Egy szavas:** egy kategória, egy szó vagy kifejezés, Wordle-szerű tippelés.
-2. **Többszavas (keresztrejtvény-stílus):** egy témakörhöz több szó tartozik, egy rácsban elhelyezve. A szavak metszik egymást, a metszéspontban lévő betű mindkét szóhoz tartozik. Ha az egyik szóban feltárul egy betű, a kereszteződő szóban is megjelenik.
+## Fejlesztés
 
-## Funkciók
+Követelmény: Node 22, Yarn 1.
 
-- **Napi streak:** egymást követő napokon megoldott rejtvények számlálója, plusz a legjobb streak.
-- **Achievementek:** pl. első megoldás, 3/7/30 napos streak, megoldás első tippre, megoldás az utolsó tippből, a többszavas mód teljesítése.
-- **Statisztikák:** játszott/megnyert játékok, tippeloszlás.
-- **Megosztás:** spoilermentes eredmény-kártya (emoji-rács), Discordba/chatbe másolható.
-- **Egy játék naponta:** a mai állapot (folyamatban/kész) megmarad újratöltés után is.
+```bash
+yarn install
+```
 
-## Témák (dizájn)
+```bash
+yarn dev
+```
 
-| Téma | Leírás |
-|---|---|
-| **Világos** | Egyszerű, modern, frappáns |
-| **Sötét** | Ugyanaz a dizájnnyelv sötét palettával |
-| **Legacy** | 2000-es évek eleji stílus: lekerekítetlen gombok, 3D-s szegélyek, gradiens fejlécek, Tahoma/Verdana jellegű betűk |
+További parancsok (`build`, `test`, `lint`, `format`, `validate`, `coverage`): [CLAUDE.md](CLAUDE.md).
 
-A kiválasztott téma localStorage-ben tárolódik. Első indításkor a rendszer beállítását (`prefers-color-scheme`) követi.
+## Telepítés (Netlify)
 
-## Technológia
+A beállítások a [netlify.toml](netlify.toml)-ban vannak (build: `yarn build`, kimenet: `dist`, Node 22, SPA-átirányítás, cache-fejlécek).
 
-- **React + Vite** (JavaScript vagy TypeScript)
-- **Hosting:** Netlify (statikus build, `yarn build` → `dist`)
-- **Adattárolás:** csak a böngészőben (localStorage), nincs backend, nincs költség
-  - téma, streak, achievementek, statisztikák, a mai játék állapota
-- **Napi rejtvény kiválasztása:** statikus rejtvényfájl (JSON), a dátum alapján determinisztikusan választva. Szerver nélkül is mindenkinek ugyanaz a mai feladvány.
+1. Netlify → **Add new site → Import an existing project → GitHub** → `VZsolt23/WhatsInMyMind`.
+2. A build-beállításokat a `netlify.toml`-ból veszi, nem kell semmit átírni → **Deploy**.
+3. Utána minden `master`-re pusholt commit automatikusan új telepítést indít.
 
-## Nyelvek
+A build a rejtvényfájlokat is ellenőrzi; hibás rejtvénnyel nem települ.
 
-1. **Első kör: angol.** Az angol rejtvények saját kategóriákkal és szójátékokkal készülnek (a magyar példa nem fordítható szó szerint, pl. *Dad bod*).
-2. **Második kör: magyar.** Külön magyar rejtvénykészlet és magyar billentyűzet (ékezetes betűk kezelése). A felület szövegei i18n-alapon készülnek, hogy a nyelv később váltható legyen.
+> Az 1. rejtvény napja (`LAUNCH_DATE` a [src/game/config.ts](src/game/config.ts)-ben) **2026-10-03**. Kiadás után ne változtasd: a rejtvények sorszáma és a játékosok mentett játékai ehhez igazodnak.
 
-## Többszavas tippelés
+## Tartalom
 
-A játékos kijelöl egy sort vagy oszlopot (egy szót a rácsban), beírja a teljes szót, és tippel, pont mint az egy szavas módban. A visszajelzés (zöld/sárga/szürke) a szó celláiba kerül. A metszéspontokban a betű a keresztező szóban is megjelenik, a zöld cella ott is zöld marad. A tippkorlát a teljes rácsra közös.
+30 angol rejtvény (20 egyszavas, 10 rácsos) a [src/puzzles/en.json](src/puzzles/en.json)-ban, naponta egy, a lista végén elölről kezdve. Új rejtvényt a lista **végére** kell fűzni; a formátum és a szabályok: [docs/PUZZLE_FORMAT.md](docs/PUZZLE_FORMAT.md).
 
-## Rejtvények előállítása
+## Állapot
 
-A rejtvények **kézzel szerkesztett adatfájlban** (JSON) vannak: minden napnak saját kategóriája, szavai, és a rács elhelyezése (melyik szó hol kezdődik, melyik irányba). Generátor nincs, így a kategória-utalások és a keresztezések minőségét mi szabályozzuk.
+- **v1.0.0:** angol nyelvű első kiadás.
+- **Következő:** magyar nyelv (külön magyar rejtvények, ékezetes billentyűzet, nyelvenként külön streak és statisztika).
 
-Egy ellenőrző szkript (validátor) buildkor lefut, és hibát jelez, ha egy metszéspontban nem egyezik a betű, a szavak kilógnak a rácsból vagy összeérnek.
+A teljes feladatlista: [docs/TASKS.md](docs/TASKS.md).
 
-**Indulási tartalom: 30 napnyi rejtvény** (angolul), vegyesen egy szavas és többszavas napokkal.
+## Dokumentáció
 
-## Achievementek
+Fejlesztési szabályok: [CLAUDE.md](CLAUDE.md). Részletek a [docs/](docs/) mappában:
 
-| Név | Feltétel |
-|---|---|
-| **First Thoughts** | Az első megoldott rejtvény |
-| **Mind Reader** | Megoldás az első tippre |
-| **Clutch** | Megoldás az utolsó tippből |
-| **Warming Up** | 3 napos streak |
-| **On a Roll** | 7 napos streak |
-| **Mastermind** | 30 napos streak |
-| **Crossed Wires** | Első megoldott többszavas rács |
-| **Grid Lock** | 5 megoldott többszavas rács |
-| **Night Owl** | Megoldás éjfél és hajnali 4 között |
-| **Early Bird** | Megoldás reggel 6 előtt |
-| **Comeback Kid** | Új streak indítása elvesztett streak után |
-| **Retro Soul** | A legacy téma kipróbálása |
-| **Flawless** | 5 megoldás egymás után legfeljebb 3 tippből |
-
-Az achievementek a megszerzés dátumával együtt tárolódnak, és az eredmények között látszanak (megszerzéskor értesítéssel).
-
-## Idő- és streak-kezelés
-
-- A „nap" a játékos **helyi naptári napja** (`YYYY-MM-DD` szöveg), nem időbélyeg. A számolás dátumokkal történik, így nyári/téli időszámítás nem okoz csúszást.
-- A mai rejtvény = a dátum és a startdátum különbsége napokban (naptári napszámmal), a rejtvénylista hosszával körbeforgatva.
-- Streak: ha az utolsó megoldás napja = tegnap, a streak nő. Ha ma már megoldott, nem változik. Ha ennél régebbi, a streak 1-ről újraindul (a legjobb streak megmarad).
-- Védelem az óra átállítása ellen: ha az eszköz dátuma korábbi az utoljára mentett napnál, a mentett napot tekintjük érvényesnek, és nem engedünk új játékot újabb dátum nélkül.
-- Egy nap, egy játék: a mai állapot (tippek, kész/folyamatban) a nap kulcsával mentődik, és a következő napon automatikusan lecserélődik.
-- A localStorage adatok verziószámmal vannak ellátva, hogy később biztonságosan migrálhatók legyenek. Sérült vagy hiányzó adatnál az app üres állapottal indul, nem omlik össze.
-
-## Döntések
-
-- **Rács:** 3–5 szó, 5×5 – 9×9 méretű; szavak 3–8 betűsek.
-- **Tippkorlát:** a rejtvény szavainak számától és hosszától függ (egyszavasnál 6–8, rácsnál 6–10). A képlet a [docs/GAME_RULES.md](docs/GAME_RULES.md)-ben van.
-- **Legacy téma:** Windows 98 / XP hangulat (bevel keretek, kék címsor, Tahoma). Eredeti MS-eszközöket nem használunk.
-- **Repó:** helyi git, `VZsolt23` / `v.zsolt2323@gmail.com`.
-
-## Fejlesztői dokumentáció
-
-Szabályok és feladatok: [CLAUDE.md](CLAUDE.md). Részletek a [docs/](docs/) mappában:
-
-- [GAME_RULES.md](docs/GAME_RULES.md): játékszabályok, visszajelzés, tippkorlát
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md): technológia, mappaszerkezet, rétegek
+- [GAME_RULES.md](docs/GAME_RULES.md): játékszabályok, visszajelzés, tippkorlát, vezérlés
+- [ARCHITECTURE.md](docs/ARCHITECTURE.md): technológia, mappaszerkezet, adatfolyam
 - [PUZZLE_FORMAT.md](docs/PUZZLE_FORMAT.md): rejtvény JSON, szerkesztési szabályok, validátor
 - [STORAGE_AND_TIME.md](docs/STORAGE_AND_TIME.md): localStorage séma, napkezelés, streak
-- [ACHIEVEMENTS.md](docs/ACHIEVEMENTS.md): achievement-lista és szabályok
-- [THEMES.md](docs/THEMES.md): témák, design tokenek, legacy dizájn
+- [ACHIEVEMENTS.md](docs/ACHIEVEMENTS.md): achievementek
+- [THEMES.md](docs/THEMES.md): témák, design tokenek, kontraszt
 - [CODING_STANDARDS.md](docs/CODING_STANDARDS.md): konvenciók, tesztelés, git
-- [TASKS.md](docs/TASKS.md): feladatbontás mérföldkövekre (M0–M11)
+
+## Licenc
+
+A JetBrains Mono betűtípus a SIL Open Font License 1.1 alatt használható ([public/fonts/OFL.txt](public/fonts/OFL.txt)).

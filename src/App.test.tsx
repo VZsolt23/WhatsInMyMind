@@ -1,10 +1,20 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { LAUNCH_DATE } from '@/game/config';
+import { addDays } from '@/lib/dayKey';
 import { App } from './App';
 
-// LAUNCH_DATE is 2026-10-01: #2 is the "In the toolbox" grid, #3 is the single word COFFEE.
-const GRID_DAY = new Date(2026, 9, 2, 12, 0);
-const SINGLE_DAY = new Date(2026, 9, 3, 12, 0);
+/** Noon on the day of puzzle #n, whatever LAUNCH_DATE is set to. */
+function dayOfPuzzle(n: number): Date {
+  const [y, m, d] = addDays(LAUNCH_DATE, n - 1)
+    .split('-')
+    .map(Number) as [number, number, number];
+  return new Date(y, m - 1, d, 12, 0);
+}
+
+// Puzzle #2 is the "In the toolbox" grid, #3 is the single word COFFEE.
+const GRID_DAY = dayOfPuzzle(2);
+const SINGLE_DAY = dayOfPuzzle(3);
 
 function seenHelp() {
   localStorage.setItem(
