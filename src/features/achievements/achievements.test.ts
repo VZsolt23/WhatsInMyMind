@@ -1,3 +1,4 @@
+import type { Guess } from '@/game/progress';
 import type { SavedGame } from '@/game/reducer';
 import { emptyStats, type Stats } from '@/features/streak/stats';
 import { createMemoryBackend, createStorage } from '@/storage/storage';
@@ -13,17 +14,32 @@ import {
 const DAY = '2026-10-02';
 const AT = '2026-10-02T10:00:00.000Z';
 
+const MISS: Guess = { slotId: 'main', letters: 'A', states: ['absent'] };
+const HIT: Guess = { slotId: 'main', letters: 'A', states: ['correct'] };
+
+/** A single-word game: a win ends with one correct guess, everything before it is a miss. */
 function game(status: 'won' | 'lost', guesses: number, hour = 12): SavedGame {
+  const misses = status === 'won' ? guesses - 1 : guesses;
   return {
     puzzleId: 'p',
     day: DAY,
     status,
     completedHour: hour,
-    guesses: Array.from({ length: guesses }, () => ({
-      slotId: 'main',
-      letters: 'A',
-      states: ['absent'],
-    })),
+    guesses: [...Array.from({ length: misses }, () => MISS), ...(status === 'won' ? [HIT] : [])],
+  };
+}
+
+/** A won grid game: `words` correct guesses plus `misses` wrong ones. */
+function gridGame(words: number, misses: number): SavedGame {
+  return {
+    puzzleId: 'g',
+    day: DAY,
+    status: 'won',
+    completedHour: 12,
+    guesses: [
+      ...Array.from({ length: misses }, () => MISS),
+      ...Array.from({ length: words }, () => HIT),
+    ],
   };
 }
 
@@ -73,6 +89,26 @@ describe('evaluateAchievements', () => {
     expect(
       unlockedBy(ended(game('won', 3), { stats: { currentStreak: streak - 1 } })),
     ).not.toContain(id);
+  });
+
+  it('grid games count wrong guesses only, not solved words', () => {
+    const grid = { isGrid: true, maxAttempts: 7, stats: { gridWon: 1 } };
+    expect(unlockedBy(ended(gridGame(4, 0), grid))).toContain('mind-reader');
+    expect(unlockedBy(ended(gridGame(4, 1), grid))).not.toContain('mind-reader');
+    expect(unlockedBy(ended(gridGame(4, 6), grid))).toContain('clutch');
+    expect(unlockedBy(ended(gridGame(4, 5), grid))).not.toContain('clutch');
+
+    let state = emptyAchievements();
+    let last: string[] = [];
+    for (let i = 0; i < 5; i++) {
+      ({ state, newlyUnlocked: last } = evaluateAchievements(
+        state,
+        ended(gridGame(4, 2), grid),
+        DAY,
+        AT,
+      ));
+    }
+    expect(last).toContain('flawless');
   });
 
   it('crossed-wires and grid-lock: grid wins', () => {

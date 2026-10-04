@@ -2,15 +2,17 @@ import type { SavedGame } from '@/game/reducer';
 import { createMemoryBackend, createStorage } from '@/storage/storage';
 import { displayStreak, emptyStats, recordGame, statsSpec, type Stats } from './stats';
 
+/** A win ends with one correct guess; every other guess is a miss. */
 function played(day: string, status: 'won' | 'lost', guesses = 3): SavedGame {
+  const misses = status === 'won' ? guesses - 1 : guesses;
   return {
     puzzleId: 'p',
     day,
     status,
-    guesses: Array.from({ length: guesses }, () => ({
+    guesses: Array.from({ length: guesses }, (_, i) => ({
       slotId: 'main',
       letters: 'A',
-      states: ['absent'],
+      states: [i < misses ? 'absent' : 'correct'],
     })),
   };
 }
@@ -70,6 +72,23 @@ describe('recordGame', () => {
     const after = recordGame(s, played('2026-10-04', 'won'), false);
     expect(after.currentStreak).toBe(1);
     expect(after.lastBrokenStreak).toBe(2);
+  });
+
+  it('puts grid wins in the bucket of their wrong guesses, not their total guesses', () => {
+    const grid: SavedGame = {
+      puzzleId: 'g',
+      day: '2026-10-01',
+      status: 'won',
+      guesses: [
+        { slotId: 'w1', letters: 'A', states: ['absent'] },
+        ...['w1', 'w2', 'w3', 'w4'].map((slotId) => ({
+          slotId,
+          letters: 'A',
+          states: ['correct' as const],
+        })),
+      ],
+    };
+    expect(recordGame(emptyStats(), grid, true).guessDistribution).toEqual([0, 1]);
   });
 
   it('counts grid games separately', () => {

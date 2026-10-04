@@ -1,5 +1,6 @@
 import { ALPHABETS } from '@/i18n/alphabet';
 import type { GridPuzzle, SinglePuzzle } from '@/puzzles/schema';
+import { countMisses } from './progress';
 import { createPlayState, inputRow, playReducer, type PlayAction, type PlayState } from './reducer';
 
 const LETTERS = ALPHABETS.en.letters;
@@ -189,9 +190,27 @@ describe('grid puzzle', () => {
     expect(s.game.guesses).toHaveLength(3);
   });
 
-  it('loses when shared attempts run out', () => {
+  it('loses when the wrong guesses run out', () => {
     let s = start();
     for (let i = 0; i < s.maxAttempts; i++) s = guess(s, 'XYZ');
     expect(s.game.status).toBe('lost');
+  });
+
+  it('does not use up an attempt when a guess solves its word', () => {
+    let s = start();
+    expect(s.maxAttempts).toBe(6);
+    for (let i = 0; i < 5; i++) s = guess(s, 'XYZ'); // 5 wrong guesses, 1 left
+    s = guess(s, 'CAT');
+    s = guess(s, 'AR');
+    expect(s.game.status).toBe('in-progress');
+    s = guess(s, 'OE');
+    expect(s.game.status).toBe('won');
+    expect(s.game.guesses).toHaveLength(8);
+    expect(countMisses(s.game.guesses)).toBe(5);
+  });
+
+  it('counts a partly correct guess as a miss', () => {
+    const s = guess(start(), 'CUT');
+    expect(countMisses(s.game.guesses)).toBe(1);
   });
 });

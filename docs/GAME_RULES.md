@@ -53,7 +53,7 @@ A virtuális billentyűzet billentyűi a legjobb ismert állapotot mutatják (`c
 - Nyilak: →/↓ a következő, ←/↑ az előző megoldatlan szóra lép, számozási sorrendben (azonos számnál előbb a vízszintes), körbeforgóan. A szógombok is ebben a sorrendben jelennek meg.
 - Egy szó **megoldott**, ha minden cellája zárolt. A rács megoldott, ha minden szó az.
 - Újra tippelhető egy már megoldott szó? Nem, a megoldott szó nem jelölhető ki.
-- A tipp mindig fogyaszt, kivéve ha érvénytelen.
+- **Csak a hibás tipp fogyaszt próbálkozást.** Hibás az a tipp, amelynek nem minden betűje zöld (`countMisses` a `src/game/progress.ts`-ben). Egy szót megfejtő tipp ingyenes, így pl. 4 szónál és 7 próbálkozásnál 3 eltalált szó után is mind a 7 megmarad, ha nem volt hibás tipp.
 
 ## Tippkorlát
 
@@ -62,11 +62,11 @@ A korlát a rejtvényből számolódik (`getMaxAttempts(puzzle)` a `src/game/att
 | Típus | Képlet |
 |---|---|
 | `single` | hossz ≤ 6 → **6**, 7–9 → **7**, ≥ 10 → **8** |
-| `grid` | `szavak száma + 3`, **+1** ha a leghosszabb szó ≥ 8 betű; minimum 6, maximum 10 |
+| `grid` | `szavak száma + 3`, **+1** ha a leghosszabb szó ≥ 8 betű; minimum 6, maximum 10 – ennyi **hibás** tipp engedett |
 
 Példák: 3 szavas rács → 6, 4 szavas → 7, 5 szavas hosszú szóval → 9.
 
-A rácsos módban a korlát az egész rácsra közös. A képletet a játékpróbák alapján hangoljuk, a konstansok egy helyen (`src/game/config.ts`) vannak.
+Közös szabály: a játék akkor ér véget vereséggel, ha a hibás tippek száma eléri a korlátot. Egyszavas módban ez megegyezik a klasszikus Wordle-lel (a nyerő tipp az egyetlen nem hibás tipp). Rácsos módban a korlát az egész rácsra közös, és a felület is a hibás tippeket mutatja (`Wrong guesses: x/y`). A képletet a játékpróbák alapján hangoljuk, a konstansok egy helyen (`src/game/config.ts`) vannak.
 
 ## Játékállapot
 
@@ -81,4 +81,4 @@ A megoldás(ok) felfedése, a streak megszakad, a megosztó kártya továbbra is
 Spoilermentes szöveg: cím, nap sorszáma, `eredmény/korlát`, `Clipboard API`-val másolható. A kártyában soha nincs betű.
 
 - Egyszavas: tippenként egy sor 🟩🟨⬛ emojival.
-- Rácsos (🧩 jelöléssel): a rács alakja, 🟩 = megfejtett cella, 🟥 = megfejtetlen cella (vereségnél), ⬛ = üres hely.
+- Rácsos (🧩 jelöléssel): a fejlécben a hibás tippek száma (`🧩 2/7 ✗`, vereségnél `X/7`), alatta a rács alakja, 🟩 = megfejtett cella, 🟥 = megfejtetlen cella (vereségnél), ⬛ = üres hely.

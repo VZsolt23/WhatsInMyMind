@@ -101,8 +101,14 @@ describe('App', () => {
     expect(screen.getByRole('region', { name: /^Selected: 2 Down/ })).toBeInTheDocument();
     expect(screen.getByRole('group', { name: 'Guess 2: A, empty, empty' })).toBeInTheDocument();
 
+    const misses = () =>
+      screen.getByText(/^Wrong guesses:/, { selector: 'section span' }).textContent;
+    expect(misses()).toBe('Wrong guesses: 1/7');
+
     await user.keyboard('wl{Enter}');
     expect(screen.getByRole('button', { name: /^2 Down.*solved/ })).toBeDisabled();
+    // Solving a word does not use up an attempt.
+    expect(misses()).toBe('Wrong guesses: 1/7');
   });
 
   it('moves between grid words with the arrow keys', async () => {

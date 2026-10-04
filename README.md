@@ -11,8 +11,8 @@ Napi szókitalálós játék a Szerencsekerék kategória-utalásaiból és a Wo
 - **Wordle-visszajelzés:** zöld = jó helyen, sárga = benne van, de máshol, szürke = nincs benne. A színek mellett jelölés is mutatja az állapotot.
 - **Két mód:**
   - **Egyszavas:** egy szó vagy kifejezés, klasszikus Wordle-tippelés.
-  - **Rácsos:** 3–5 szó egy keresztrejtvény-rácsban. A kijelölt szót kell beírni; a megfejtett betűk a keresztező szavakban is megjelennek. A tippek az egész rácsra közösek.
-- **Tippkorlát:** a rejtvény méretétől függ (egyszavasnál 6–8, rácsnál 6–10).
+  - **Rácsos:** 3–5 szó egy keresztrejtvény-rácsban. A kijelölt szót kell beírni; a megfejtett betűk a keresztező szavakban is megjelennek. A hibás tippek kerete az egész rácsra közös.
+- **Tippkorlát:** a rejtvény méretétől függ (egyszavasnál 6–8 tipp, rácsnál 6–10 **hibás** tipp; egy szó megfejtése nem fogyaszt próbálkozást).
 - **Streak, statisztika, 13 achievement**, spoilermentes megosztás (emoji-rács).
 - **Témák:** világos, sötét és **Retro 98** (Windows 98/XP hangulat). A választás a böngészőben tárolódik.
 

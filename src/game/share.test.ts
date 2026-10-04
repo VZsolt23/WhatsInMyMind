@@ -44,7 +44,29 @@ describe('buildShareText', () => {
     let s = createPlayState(puzzle, '2026-10-02', null, ALPHABETS.en.letters);
     s = guess(s, 'CAT');
     s = guess(s, 'X');
+    s = guess(s, 'X');
     expect(s.game.status).toBe('lost');
-    expect(share(s, true)).toBe('WhatsInMyMind #7 🧩 X/2\n\n🟩🟩🟩\n🟥⬛⬛');
+    expect(share(s, true)).toBe('WhatsInMyMind #7 🧩 X/2 ✗\n\n🟩🟩🟩\n🟥⬛⬛');
+  });
+
+  it('scores a won grid by wrong guesses only', () => {
+    const puzzle: GridPuzzle = {
+      id: 'g',
+      type: 'grid',
+      category: 'c',
+      rows: 2,
+      cols: 3,
+      words: [
+        { id: 'w1', answer: 'CAT', row: 0, col: 0, dir: 'across' },
+        { id: 'w2', answer: 'CO', row: 0, col: 0, dir: 'down' },
+      ],
+      maxAttempts: 3,
+    };
+    let s = createPlayState(puzzle, '2026-10-02', null, ALPHABETS.en.letters);
+    s = guess(s, 'CUT');
+    s = guess(s, 'A');
+    s = guess(s, 'O');
+    expect(s.game.status).toBe('won');
+    expect(share(s, true).split('\n')[0]).toBe('WhatsInMyMind #7 🧩 1/3 ✗');
   });
 });

@@ -42,6 +42,15 @@ export function deriveProgress(board: Board, guesses: readonly Guess[]): Progres
   };
 }
 
+/**
+ * Wrong guesses: every guess that is not fully correct. Only these use up
+ * attempts, so solving a grid word is free. In single mode this equals
+ * "guesses so far" until the winning guess.
+ */
+export function countMisses(guesses: readonly Guess[]): number {
+  return guesses.filter((g) => g.states.some((s) => s !== 'correct')).length;
+}
+
 /** Best known state per letter. In grid mode pass only the selected slot's guesses. */
 export function deriveKeyStates(guesses: readonly Guess[]): Map<string, LetterState> {
   const result = new Map<string, LetterState>();

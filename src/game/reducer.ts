@@ -3,7 +3,7 @@ import type { Puzzle } from '@/puzzles/schema';
 import { getMaxAttempts } from './attempts';
 import { buildBoard, getSlot, slotsInCrosswordOrder, type Board, type Slot } from './board';
 import { evaluateGuess } from './feedback';
-import { deriveProgress, type Guess, type Progress } from './progress';
+import { countMisses, deriveProgress, type Guess, type Progress } from './progress';
 
 export type GameStatus = 'in-progress' | 'won' | 'lost';
 
@@ -126,7 +126,7 @@ function submit(state: PlayState, now: Date): PlayState {
 
   let status: GameStatus = 'in-progress';
   if (progress.solved) status = 'won';
-  else if (guesses.length >= state.maxAttempts) status = 'lost';
+  else if (countMisses(guesses) >= state.maxAttempts) status = 'lost';
 
   const game: SavedGame = { ...state.game, guesses, status };
   if (status !== 'in-progress') {

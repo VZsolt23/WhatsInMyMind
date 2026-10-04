@@ -4,6 +4,7 @@ import { loadGame } from '@/features/game/gamesStore';
 import { useProgress } from '@/features/progress/progressContext';
 import { useT } from '@/features/settings/settingsContext';
 import { displayStreak } from '@/features/streak/stats';
+import { countMisses } from '@/game/progress';
 import type { DayKey } from '@/lib/dayKey';
 import { storage } from '@/storage/storage';
 import styles from './modals.module.css';
@@ -14,7 +15,7 @@ export function StatsModal({ day, onClose }: { day: DayKey; onClose: () => void 
   const t = useT();
   const { stats } = useProgress();
   const today = loadGame(storage, day);
-  const highlight = today?.status === 'won' ? today.guesses.length - 1 : -1;
+  const highlight = today?.status === 'won' ? countMisses(today.guesses) : -1;
 
   const winRate = stats.played > 0 ? Math.round((stats.won / stats.played) * 100) : 0;
   const bars = Array.from(

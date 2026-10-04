@@ -1,3 +1,4 @@
+import { countMisses } from '@/game/progress';
 import type { SavedGame } from '@/game/reducer';
 import { isDayKey, type DayKey } from '@/lib/dayKey';
 import type { ThemeSetting } from '@/storage/schemas';
@@ -9,7 +10,7 @@ export type AchievementEvent =
   | { type: 'themeChanged'; theme: ThemeSetting };
 
 export interface Counters {
-  /** Consecutive wins in 3 guesses or fewer. */
+  /** Consecutive wins with at most FLAWLESS_MAX_MISSES wrong guesses. */
   flawlessRun: number;
 }
 
@@ -40,7 +41,8 @@ function wonBetween(fromHour: number, toHour: number) {
 }
 
 export const FLAWLESS_RUN = 5;
-export const FLAWLESS_MAX_GUESSES = 3;
+/** Single word: solved within 3 guesses. Grid: at most 2 wrong guesses. */
+export const FLAWLESS_MAX_MISSES = 2;
 export const COMEBACK_MIN_STREAK = 3;
 
 export const ACHIEVEMENTS: readonly AchievementDefinition[] = [
@@ -48,12 +50,12 @@ export const ACHIEVEMENTS: readonly AchievementDefinition[] = [
   {
     id: 'mind-reader',
     icon: '🔮',
-    check: ({ event }) => won(event) && event.game.guesses.length === 1,
+    check: ({ event }) => won(event) && countMisses(event.game.guesses) === 0,
   },
   {
     id: 'clutch',
     icon: '😮‍💨',
-    check: ({ event }) => won(event) && event.game.guesses.length === event.maxAttempts,
+    check: ({ event }) => won(event) && countMisses(event.game.guesses) === event.maxAttempts - 1,
   },
   { id: 'warming-up', icon: '🔥', check: streakAtLeast(3) },
   { id: 'on-a-roll', icon: '🎯', check: streakAtLeast(7) },
@@ -100,7 +102,7 @@ export function emptyAchievements(): AchievementsState {
 
 function updateCounters(counters: Counters, event: AchievementEvent): Counters {
   if (event.type !== 'gameEnded') return counters;
-  const flawless = won(event) && event.game.guesses.length <= FLAWLESS_MAX_GUESSES;
+  const flawless = won(event) && countMisses(event.game.guesses) <= FLAWLESS_MAX_MISSES;
   return { flawlessRun: flawless ? counters.flawlessRun + 1 : 0 };
 }
 

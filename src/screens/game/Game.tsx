@@ -5,7 +5,7 @@ import { useDailyGame } from '@/features/game/useDailyGame';
 import { useSettings, useT } from '@/features/settings/settingsContext';
 import { normalizeLetter } from '@/i18n/alphabet';
 import { getSlot } from '@/game/board';
-import { deriveKeyStates } from '@/game/progress';
+import { countMisses, deriveKeyStates } from '@/game/progress';
 import type { DayKey } from '@/lib/dayKey';
 import { puzzleForDay } from '@/puzzles/daily';
 import { loadPuzzles } from '@/puzzles';
@@ -80,6 +80,10 @@ function GameView({ puzzle, number, day, inputEnabled }: GameViewProps) {
   const playing = state.game.status === 'in-progress';
   const isGrid = puzzle.type === 'grid';
   const { selectedSlotId } = state;
+  // Grids only count wrong guesses against the limit; single words count every guess.
+  const attemptsLabel = isGrid
+    ? t('game.misses', { used: countMisses(state.game.guesses), max: state.maxAttempts })
+    : t('game.attempts', { used: state.game.guesses.length, max: state.maxAttempts });
 
   useEffect(() => {
     if (state.notice) toast(t(`notice.${state.notice.id}`));
@@ -123,9 +127,7 @@ function GameView({ puzzle, number, day, inputEnabled }: GameViewProps) {
       <section className={styles.banner} aria-label={t('game.category')}>
         <div className={styles.meta}>
           <span>{t('game.puzzleNumber', { n: number })}</span>
-          <span>
-            {t('game.attempts', { used: state.game.guesses.length, max: state.maxAttempts })}
-          </span>
+          <span>{attemptsLabel}</span>
         </div>
         <p className={styles.categoryLabel}>{t('game.category')}</p>
         <h2 className={styles.category}>{puzzle.category}</h2>
@@ -158,9 +160,7 @@ function GameView({ puzzle, number, day, inputEnabled }: GameViewProps) {
 
       <footer className={styles.statusBar} aria-hidden="true">
         <span>{t('game.puzzleNumber', { n: number })}</span>
-        <span>
-          {t('game.attempts', { used: state.game.guesses.length, max: state.maxAttempts })}
-        </span>
+        <span>{attemptsLabel}</span>
       </footer>
     </div>
   );

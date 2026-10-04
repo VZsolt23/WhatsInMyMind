@@ -1,7 +1,7 @@
 import { cellKey, type Board } from './board';
 import { APP_NAME } from './config';
 import type { LetterState } from './feedback';
-import type { Progress } from './progress';
+import { countMisses, type Progress } from './progress';
 import type { SavedGame } from './reducer';
 
 const EMOJI: Record<LetterState, string> = { correct: '🟩', present: '🟨', absent: '⬛' };
@@ -27,13 +27,18 @@ export function buildShareText({
   maxAttempts,
   isGrid,
 }: ShareInput): string {
-  const score = game.status === 'won' ? String(game.guesses.length) : 'X';
-  const header = `${APP_NAME} #${puzzleNumber}${isGrid ? ' 🧩' : ''} ${score}/${maxAttempts}`;
+  const won = game.status === 'won';
 
   if (!isGrid) {
+    const score = won ? String(game.guesses.length) : 'X';
+    const header = `${APP_NAME} #${puzzleNumber} ${score}/${maxAttempts}`;
     const rows = game.guesses.map((g) => g.states.map((s) => EMOJI[s]).join(''));
     return [header, '', ...rows].join('\n');
   }
+
+  // Grid: only wrong guesses count against the limit, so that is the score.
+  const score = won ? String(countMisses(game.guesses)) : 'X';
+  const header = `${APP_NAME} #${puzzleNumber} 🧩 ${score}/${maxAttempts} ✗`;
 
   const rows: string[] = [];
   for (let r = 0; r < board.rows; r++) {

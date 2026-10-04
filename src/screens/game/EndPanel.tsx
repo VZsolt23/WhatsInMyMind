@@ -4,6 +4,7 @@ import { Icon } from '@/components/Icon';
 import { useToast } from '@/components/toast/toastContext';
 import { useT } from '@/features/settings/settingsContext';
 import { numberSlots } from '@/game/board';
+import { countMisses } from '@/game/progress';
 import type { PlayState } from '@/game/reducer';
 import { buildShareText } from '@/game/share';
 import { msUntilNextDay } from '@/lib/dayKey';
@@ -52,7 +53,13 @@ export function EndPanel({ state, number }: { state: PlayState; number: number }
   return (
     <section className={styles.panel} aria-live="polite">
       <h2 className={styles.title}>{won ? t('end.won') : t('end.lost')}</h2>
-      {won && <p>{t('end.wonIn', { n: game.guesses.length, max: maxAttempts })}</p>}
+      {won && (
+        <p>
+          {isGrid
+            ? t('end.wonGrid', { n: countMisses(game.guesses), max: maxAttempts })
+            : t('end.wonIn', { n: game.guesses.length, max: maxAttempts })}
+        </p>
+      )}
 
       <div className={styles.answers}>
         <p className={styles.label}>{isGrid ? t('end.answers') : t('end.answer')}</p>

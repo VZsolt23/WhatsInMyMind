@@ -1,3 +1,4 @@
+import { countMisses } from '@/game/progress';
 import type { SavedGame } from '@/game/reducer';
 import { addDays, daysBetween, isDayKey, type DayKey } from '@/lib/dayKey';
 import type { StoreSpec } from '@/storage/storage';
@@ -14,7 +15,7 @@ export interface Stats {
   lastCompletedDay: DayKey | null;
   /** Last day whose result was recorded; makes recording idempotent. */
   lastRecordedDay: DayKey | null;
-  /** Index i = number of wins with i + 1 guesses. */
+  /** Index i = number of wins with i wrong guesses (shown as "solved on try i + 1"). */
   guessDistribution: number[];
   gridPlayed: number;
   gridWon: number;
@@ -60,7 +61,8 @@ export function recordGame(stats: Stats, game: SavedGame, isGrid: boolean): Stat
 
   next.won += 1;
   next.gridWon += isGrid ? 1 : 0;
-  const index = game.guesses.length - 1;
+  // Bucket n+1 = won with n wrong guesses; for single words that is "solved on guess n+1".
+  const index = countMisses(game.guesses);
   while (next.guessDistribution.length <= index) next.guessDistribution.push(0);
   next.guessDistribution[index] = (next.guessDistribution[index] ?? 0) + 1;
 

@@ -1,5 +1,5 @@
 import { buildBoard } from './board';
-import { deriveKeyStates, deriveProgress, type Guess } from './progress';
+import { countMisses, deriveKeyStates, deriveProgress, type Guess } from './progress';
 
 const board = buildBoard({
   id: 'g',
@@ -37,6 +37,15 @@ describe('deriveProgress', () => {
     expect(p.guessesBySlot.get('w1')).toHaveLength(1);
     expect(p.guessesBySlot.has('zz')).toBe(false);
     expect(p.lockedCells).toEqual(new Set(['0,0', '0,2']));
+  });
+});
+
+describe('countMisses', () => {
+  it('counts guesses that are not fully correct', () => {
+    expect(countMisses([])).toBe(0);
+    expect(countMisses([g('w1', 'CAT', 'ccc'), g('w1', 'COT', 'cac'), g('w2', 'XYZ', 'aaa')])).toBe(
+      2,
+    );
   });
 });
 
