@@ -282,5 +282,292 @@
     "category": "Won a famous race without ever hurrying",
     "answer": "TORTOISE",
     "note": "medium"
+  },
+  {
+    "id": "en-031",
+    "type": "single",
+    "category": "Tomorrow's lunch, tonight's dinner",
+    "answer": "LEFTOVERS",
+    "note": "medium"
+  },
+  {
+    "id": "en-032",
+    "type": "grid",
+    "category": "Paint box colours",
+    "rows": 5,
+    "cols": 8,
+    "words": [
+      { "id": "w1", "answer": "PURPLE", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "PINK", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "RED", "row": 0, "col": 2, "dir": "down" },
+      { "id": "w4", "answer": "LILAC", "row": 0, "col": 4, "dir": "down", "clue": "Pale purple, like the flower" },
+      { "id": "w5", "answer": "CYAN", "row": 4, "col": 4, "dir": "across", "clue": "Printer-ink blue" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-033",
+    "type": "single",
+    "category": "Forgotten the moment you need it most",
+    "answer": "PASSWORD",
+    "note": "medium"
+  },
+  {
+    "id": "en-034",
+    "type": "single",
+    "category": "The week's least popular day",
+    "answer": "MONDAY",
+    "note": "easy"
+  },
+  {
+    "id": "en-035",
+    "type": "grid",
+    "category": "From head to toe",
+    "rows": 5,
+    "cols": 8,
+    "words": [
+      { "id": "w1", "answer": "SHOULDER", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "SHIN", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "LEG", "row": 0, "col": 4, "dir": "down" },
+      { "id": "w4", "answer": "EAR", "row": 0, "col": 6, "dir": "down" },
+      { "id": "w5", "answer": "NECK", "row": 3, "col": 0, "dir": "across" }
+    ],
+    "note": "easy"
+  },
+  {
+    "id": "en-036",
+    "type": "single",
+    "category": "Only opens up when things get rough outside",
+    "answer": "UMBRELLA",
+    "note": "medium"
+  },
+  {
+    "id": "en-037",
+    "type": "single",
+    "category": "Supposedly cured by a good fright",
+    "answer": "HICCUPS",
+    "note": "medium"
+  },
+  {
+    "id": "en-038",
+    "type": "grid",
+    "category": "Game on!",
+    "rows": 8,
+    "cols": 8,
+    "words": [
+      { "id": "w1", "answer": "HOCKEY", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "HANDBALL", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "CRICKET", "row": 0, "col": 2, "dir": "down" },
+      { "id": "w4", "answer": "YOGA", "row": 0, "col": 5, "dir": "down" },
+      { "id": "w5", "answer": "TENNIS", "row": 6, "col": 2, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-039",
+    "type": "single",
+    "category": "Rush hour's slowest dish",
+    "answer": "TRAFFIC JAM",
+    "note": "medium"
+  },
+  {
+    "id": "en-040",
+    "type": "single",
+    "category": "That ducking annoying phone feature",
+    "answer": "AUTOCORRECT",
+    "note": "hard"
+  },
+  {
+    "id": "en-041",
+    "type": "grid",
+    "category": "In the wardrobe",
+    "rows": 5,
+    "cols": 6,
+    "words": [
+      { "id": "w1", "answer": "JACKET", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "JEANS", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "COAT", "row": 0, "col": 2, "dir": "down" },
+      { "id": "w4", "answer": "TIE", "row": 0, "col": 5, "dir": "down" },
+      { "id": "w5", "answer": "TOP", "row": 3, "col": 2, "dir": "across" }
+    ],
+    "note": "easy"
+  },
+  {
+    "id": "en-042",
+    "type": "single",
+    "category": "A portrait taken at arm's length",
+    "answer": "SELFIE",
+    "note": "easy"
+  },
+  {
+    "id": "en-043",
+    "type": "single",
+    "category": "Always hiding between the sofa cushions",
+    "answer": "REMOTE",
+    "note": "medium"
+  },
+  {
+    "id": "en-044",
+    "type": "grid",
+    "category": "Down on the farm",
+    "rows": 6,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "ROOSTER", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "RAM", "row": 0, "col": 0, "dir": "down", "clue": "A male sheep" },
+      { "id": "w3", "answer": "TURKEY", "row": 0, "col": 4, "dir": "down" },
+      { "id": "w4", "answer": "DUCK", "row": 3, "col": 1, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-045",
+    "type": "single",
+    "category": "Candles on top, wishes inside",
+    "answer": "BIRTHDAY CAKE",
+    "note": "medium"
+  },
+  {
+    "id": "en-046",
+    "type": "single",
+    "category": "Movie night's crunchy companion",
+    "answer": "POPCORN",
+    "note": "easy"
+  },
+  {
+    "id": "en-047",
+    "type": "grid",
+    "category": "From the vegetable patch",
+    "rows": 6,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "SPINACH", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "SQUASH", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "CELERY", "row": 0, "col": 5, "dir": "down" },
+      { "id": "w4", "answer": "KALE", "row": 3, "col": 2, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-048",
+    "type": "single",
+    "category": "Ruins the ending before you get there",
+    "answer": "SPOILER",
+    "note": "medium"
+  },
+  {
+    "id": "en-049",
+    "type": "single",
+    "category": "The dog allegedly ate it",
+    "answer": "HOMEWORK",
+    "note": "easy"
+  },
+  {
+    "id": "en-050",
+    "type": "grid",
+    "category": "On the office desk",
+    "rows": 8,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "STAPLER", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "SCISSORS", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "PEN", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "ERASER", "row": 0, "col": 5, "dir": "down" },
+      { "id": "w5", "answer": "TAPE", "row": 4, "col": 2, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-051",
+    "type": "single",
+    "category": "A souvenir of forgetting the sunscreen",
+    "answer": "SUNBURN",
+    "note": "medium"
+  },
+  {
+    "id": "en-052",
+    "type": "single",
+    "category": "A childhood castle built from bedding",
+    "answer": "PILLOW FORT",
+    "note": "medium"
+  },
+  {
+    "id": "en-053",
+    "type": "grid",
+    "category": "Going camping",
+    "rows": 8,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "LANTERN", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "LOG", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "TENT", "row": 0, "col": 3, "dir": "down" },
+      { "id": "w4", "answer": "RUCKSACK", "row": 0, "col": 5, "dir": "down", "clue": "Carried on your back" },
+      { "id": "w5", "answer": "MAP", "row": 5, "col": 4, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-054",
+    "type": "single",
+    "category": "The price of eating ice cream too fast",
+    "answer": "BRAIN FREEZE",
+    "note": "medium"
+  },
+  {
+    "id": "en-055",
+    "type": "single",
+    "category": "The look that wins the last biscuit",
+    "answer": "PUPPY EYES",
+    "note": "hard"
+  },
+  {
+    "id": "en-056",
+    "type": "grid",
+    "category": "Sweet treats",
+    "rows": 6,
+    "cols": 6,
+    "words": [
+      { "id": "w1", "answer": "MUFFIN", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "MOUSSE", "row": 0, "col": 0, "dir": "down", "clue": "Light and airy, often chocolate" },
+      { "id": "w3", "answer": "FUDGE", "row": 0, "col": 2, "dir": "down" },
+      { "id": "w4", "answer": "ICING", "row": 0, "col": 4, "dir": "down" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-057",
+    "type": "single",
+    "category": "Where weekend plans go to die",
+    "answer": "GROUP CHAT",
+    "note": "medium"
+  },
+  {
+    "id": "en-058",
+    "type": "single",
+    "category": "Enter the washing machine in pairs, leave alone",
+    "answer": "SOCKS",
+    "note": "medium"
+  },
+  {
+    "id": "en-059",
+    "type": "grid",
+    "category": "Around the living room",
+    "rows": 8,
+    "cols": 7,
+    "words": [
+      { "id": "w1", "answer": "CURTAIN", "row": 0, "col": 0, "dir": "across" },
+      { "id": "w2", "answer": "CLOCK", "row": 0, "col": 0, "dir": "down" },
+      { "id": "w3", "answer": "RUG", "row": 0, "col": 2, "dir": "down" },
+      { "id": "w4", "answer": "ARMCHAIR", "row": 0, "col": 4, "dir": "down" },
+      { "id": "w5", "answer": "LAMP", "row": 5, "col": 3, "dir": "across" }
+    ],
+    "note": "medium"
+  },
+  {
+    "id": "en-060",
+    "type": "single",
+    "category": "The only real motivator for some people",
+    "answer": "DEADLINE",
+    "note": "medium"
   }
 ]

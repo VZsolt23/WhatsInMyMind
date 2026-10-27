@@ -46,7 +46,7 @@ A build a rejtvényfájlokat is ellenőrzi; hibás rejtvénnyel nem települ.
 
 ## Tartalom
 
-30 angol rejtvény (20 egyszavas, 10 rácsos) a [src/puzzles/en.json](src/puzzles/en.json)-ban, naponta egy, a lista végén elölről kezdve. Új rejtvényt a lista **végére** kell fűzni; a formátum és a szabályok: [docs/PUZZLE_FORMAT.md](docs/PUZZLE_FORMAT.md).
+60 angol rejtvény (40 egyszavas, 20 rácsos) a [src/puzzles/en.json](src/puzzles/en.json)-ban, naponta egy. Az utolsó (#60) 2026-12-01-én jön; ha addig nem bővül a lista, utána elölről kezdődik. Új rejtvényt a lista **végére** kell fűzni; a formátum és a szabályok: [docs/PUZZLE_FORMAT.md](docs/PUZZLE_FORMAT.md).
 
 ## Állapot
 

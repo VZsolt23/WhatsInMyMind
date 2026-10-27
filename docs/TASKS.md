@@ -70,6 +70,7 @@ DoD: `yarn dev` és `yarn build` fut.
 
 - [x] 30 rejtvény (20 single, 10 grid), nehézség a `note` mezőben
 - [x] Mind átmegy a validátoron, a build 30-as minimumot követel
+- [x] Második adag: en-031–en-060 (20 single, 10 grid), a lista végére fűzve; kitart 2026-12-01-ig
 - [ ] Játékpróba és nehézség-hangolás (emberi tesztelők), szükség esetén `maxAttempts` vagy `clue` finomítása
 
 ## M9 – Súgó, minőség, megjelenés
